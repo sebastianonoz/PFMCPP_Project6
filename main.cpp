@@ -109,18 +109,23 @@ struct Struct2
 {
     static float staticFunctionA(U* that, float* updatedValue )        //10
     {
-        std::cout << "U's name1 value: " << that->name1 << std::endl;
-        that->name1 = *updatedValue;
-        std::cout << "U's name1 updated value: " << that->name1 << std::endl;
-        while( std::abs(that->name2 - that->name1) > 0.001f )
+        if (that != nullptr && updatedValue != nullptr)
         {
-            /*
-             write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
-             */
-            that->name2 += 1.f;
+            std::cout << "U's name1 value: " << that->name1 << std::endl;
+            that->name1 = *updatedValue;
+            std::cout << "U's name1 updated value: " << that->name1 << std::endl;
+            while( std::abs(that->name2 - that->name1) > 0.001f )
+            {
+                /*
+                 write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
+                 */
+                that->name2 += 1.f;
+            }
+            std::cout << "U's name2 updated value: " << that->name2 << std::endl;
+            return that->name2 * that->name1;
         }
-        std::cout << "U's name2 updated value: " << that->name2 << std::endl;
-        return that->name2 * that->name1;
+        std::cout << "value is nullptr" << std::endl;    
+        return 0;
     }
 };
         
@@ -146,9 +151,9 @@ int main()
     Struct1 f;                                            //7
     auto* smaller = f.compare( &name1, &name2 );                              //8
     if(smaller != nullptr)
-        std::cout << "The smaller one is " << smaller->name << "." << std::endl;
+        std::cout << "The smaller one is " << smaller->name << std::endl; //9
     else
-        std::cout << "The two values are equal." << std::endl; //9
+        std::cout << "The two values are equal or at least one or both values are nullptr." << std::endl; 
     
     U u1;
     float updatedValue = 5.f;
