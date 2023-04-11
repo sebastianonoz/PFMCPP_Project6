@@ -28,7 +28,8 @@ as best you can.
 
 #include <iostream>
 #include <string>
-struct T {
+struct T 
+{ 
     T(int v, const char *n) // 1
         : value(v), name(n) {}
         
@@ -69,7 +70,8 @@ struct U
     }
 };
 
-struct Struct2 {
+struct Struct2 
+{
     static float staticFunctionA(U &that, float &updatedValue) // 10
     {
         std::cout << "U's name1 value: " << that.name1 << std::endl;
@@ -104,7 +106,8 @@ struct Struct2 {
  Wait for my code review.
  */
 
-int main() {
+int main() 
+{
     T name1(1, "name1"); // 6
     T name2(1, "name2"); // 6
     
